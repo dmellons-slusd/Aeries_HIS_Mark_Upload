@@ -42,7 +42,8 @@ def insert_new_his_record(cnxn, id: str, sq: int, cn: str, mk: str, cr: int, co:
     else:
         cc = 0
     if gr < 9:
-        st = 911
+        core.log(f"Invalid grade level for student ID {id}. Skipping record.")
+        raise ValueError(f"Invalid grade level for student ID {id}. Skipping record.")
     sql = text("""
     INSERT INTO HIS (
         PID, 
